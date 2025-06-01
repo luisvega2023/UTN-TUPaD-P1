@@ -58,18 +58,24 @@ def suma_digitos(n):
     else:
         return suma_digitos(n//10) + n%10
 
-#Actividad 7: 
+#Actividad 7: funcion que reciba el número de bloques en el nivel más bajo y devuelva el total de bloques que necesita para construir toda la pirámide.
 
 def contar_bloques(num):
     # caso base
     if num == 0:
-        return 1
+        return 0
     # llamada recursiva
     else:
         return num + contar_bloques(num-1)
-    
 
-print(contar_bloques(4))
+#Actividad 8: Funcion que reciba un número entero positivo, un dígito y que devuelva cuantas veces aparece ese dígito dentro del número.
+
+def contar_digito(numero, digito):
+    if numero == 0:  # Caso base: si el número es 0, no quedan más dígitos por analizar
+        return 0
+    return (1 if numero % 10 == digito else 0) + contar_digito(numero // 10, digito)
+
+
 #///////////////////////////////////////////////////////////////////
 #Actividad 1: 
 #se pide al usuario un numero maximo, del cual se mostrara del 1 al max.
@@ -103,7 +109,16 @@ else:
 
 #Actividad 6:
 
-n=int(input("Ingrese un numero al que quiera sumar sus digitos: "))
-print(f"La suma de los digitos del numero {n} es: {suma_digitos(n)}")
+num=int(input("Ingrese un numero al que quiera sumar sus digitos: "))
+print(f"La suma de los digitos del numero {num} es: {suma_digitos(num)}")
 
 #Actividad 7:
+
+num=int(input("Ingrese la cantidad de niveles que tiene la piramide: "))
+print(f"La cantidad de bloques que tiene los {num} niveles son: {contar_bloques(num)}")
+
+#Actividad 8:
+
+num=int(input("Ingrese un número entero positivo: "))
+digito=int(input("Ingrese un digito que desea saber cuántas veces aparece en el número: "))
+print(f"El digito {digito} aparece {contar_digito(num,digito)} en el numero {num}")
